@@ -149,4 +149,21 @@ function setWorld(worldState) {
 
     const grassMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(900, 570), scale(4), 'grass'])
     grassMon.play('grass')
+
+    // criando NPCs
+    add([ sprite('npc'), scale(4), pos(600,700), area(), body({isStatic: true}), 'npc'])
+
+    // criando o Player
+    const player = add([
+        sprite('player-down'),
+        pos(500,700),
+        scale(4),
+        area(),
+        body(),
+        {
+            currentSprite: 'player-down',
+            speed: 300,
+            isInDialogue: false
+        },
+    ])
 }
