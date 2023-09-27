@@ -247,4 +247,44 @@ function setWorld(worldState) {
     for (const faintedMon of worldState.faintedMons) {
         destroy(get(faintedMon)[0])
     }
+
+    // colisões do Player com os NPCs
+    player.onCollide('npc', () => {
+        // cria um container fixo de caixa de dialogo
+        player.isInDialogue = true
+        const dialogueBoxFixedContainer = add([fixed()])
+        const dialogueBox = dialogueBoxFixedContainer.add([
+            rect(1000, 200),
+            outline(5),
+            pos(150, 500),
+            fixed()
+        ])
+        const dialogue = "Defeat all monsters on this island and you'll become the champion!"
+        const content = dialogueBox.add([
+            text('', 
+            {
+                size: 42,
+                width: 900,
+                lineSpacing: 15,
+            }),
+            color(10,10,10),
+            pos(40,30),
+            fixed()
+        ])
+
+        // se o estado mundial de mosntros desmaiados for inferior a 4, atribui-se o texto da 'const dialogue', se não, o Player recebe a mensagem que venceu
+        if (worldState.faintedMons < 4) {
+            content.text = dialogue
+        } else {
+            content.text = "You're the champion!"
+        }
+
+        // fecha a caixa de dialogo com a tecla 'space'
+        onUpdate(() => {
+            if (isKeyDown('space')) {
+                destroy(dialogueBox)
+                player.isInDialogue = false
+            }
+        })
+    })
 }
