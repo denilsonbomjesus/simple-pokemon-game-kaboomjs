@@ -182,4 +182,55 @@ function setWorld(worldState) {
             player.flipX = !player.flipX
         }
     })
+
+    // movimento do player
+    // funcao (fornecida pelo kaboom) que muda o sprite para onde queremos andar - se o sprite atual não for igual ao nome do sprite que queremos usar, a funcao altera o sprite
+    function setSprite(player, spriteName) {
+        if (player.currentSprite !== spriteName) {
+            player.use(sprite(spriteName))
+            player.currentSprite = spriteName
+        }
+    }
+
+    // para o moviemto - onKeyDown (captura a tecla que foi clicada)
+    onKeyDown('down', () => {
+        if (player.isInDialogue) return
+        setSprite(player, 'player-down')
+        player.move(0, player.speed)
+    })
+
+    onKeyDown('up', () => {
+        if (player.isInDialogue) return
+        setSprite(player, 'player-up')
+        player.move(0, -player.speed)
+    })
+
+    onKeyDown('left', () => {
+        if (player.isInDialogue) return
+        player.flipX = false
+        if (player.curAnim() !== 'walk') {
+            setSprite(player, 'player-side')
+            player.play('walk')
+        }
+        player.move(-player.speed, 0)
+
+    })
+
+    onKeyDown('right', () => {
+        if (player.isInDialogue) return
+        player.flipX = true
+        if (player.curAnim() !== 'walk') {
+            setSprite(player, 'player-side')
+            player.play('walk')
+        }
+        player.move(player.speed, 0)
+    })
+
+    onKeyRelease('left', () => {
+        player.stop()
+    })
+
+    onKeyRelease('right', () => {
+        player.stop()
+    })
 }
