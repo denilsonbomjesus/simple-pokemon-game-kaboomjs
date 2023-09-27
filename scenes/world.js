@@ -137,5 +137,16 @@ function setWorld(worldState) {
         }
     }
 
+    // construindo os monstros 
+    add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,700), scale(4), 'cat'])
 
+    const spiderMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(400,300), scale(4), 'spider'])
+    spiderMon.play('spider')
+    spiderMon.flipX = true
+
+    const centipedeMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,100), scale(4), 'centipede'])
+    centipedeMon.play('centipede')
+
+    const grassMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(900, 570), scale(4), 'grass'])
+    grassMon.play('grass')
 }

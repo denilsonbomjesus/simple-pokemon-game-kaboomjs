@@ -3,7 +3,7 @@
 - [x] 3. Loading assets for the game
 - [x] 4. Creating scenes
 - [x] 5. Building the world scene + creating our map
-- [ ] 6. Creating monsters
+- [x] 6. Creating monsters
 - [ ] 7. Creating the player and an NPC
 - [ ] 8. Setting up the camera
 - [ ] 9. Setting up player movement
