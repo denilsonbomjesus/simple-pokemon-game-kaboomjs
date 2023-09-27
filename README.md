@@ -4,8 +4,8 @@
 - [x] 4. Creating scenes
 - [x] 5. Building the world scene + creating our map
 - [x] 6. Creating monsters
-- [ ] 7. Creating the player and an NPC
-- [ ] 8. Setting up the camera
+- [x] 7. Creating the player and an NPC
+- [x] 8. Setting up the camera
 - [ ] 9. Setting up player movement
 - [ ] 10. Passing data from one scene to another
 - [ ] 11. NPC logic

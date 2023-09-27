@@ -166,4 +166,20 @@ function setWorld(worldState) {
             isInDialogue: false
         },
     ])
+
+    // camera que segue o player
+    let tick = 0
+    onUpdate(() => {
+        camPos(player.pos)
+        tick++
+        // o player está pressionando a tecla para baixo ou para cima
+        if ((isKeyDown('down') || isKeyDown('up')) 
+        // garante que player possa se movimentar da maneira correta
+        && tick % 20 === 0
+        //  se o player não estiver em dialogo, pode se mover
+        && !player.isInDialogue) {
+            // pega o corte contrario para dar o efeito de movimento
+            player.flipX = !player.flipX
+        }
+    })
 }
