@@ -1,7 +1,7 @@
 kaboom({
     width: 1280,
     height: 720,
-    scale: 0.7
+    scale: 1.1
 })
 
 // plano de fundo

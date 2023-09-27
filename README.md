@@ -9,4 +9,4 @@
 - [x] 9. Setting up player movement
 - [x] 10. Passing data from one scene to another
 - [x] 11. NPC logic
-- [ ] 12. Implementing battle mechanic + game loop
+- [x] 12. Implementing battle mechanic + game loop

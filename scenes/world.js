@@ -287,4 +287,30 @@ function setWorld(worldState) {
             }
         })
     })
+
+    // => lógica do mundo na batalha contra os monstros
+    // funcao flashScreen cria um grande retangulo, que começa com a opacidade 0 e é modificada para exibir um 'efeito de piscar'
+    function flashScreen() {
+        const flash = add([rect(1280, 720), color(10,10,10), fixed(), opacity(0)])
+        // uso de interpolção - tween (nova funcionalidade do Kaboom que permite uma transição suave de um valor) aqui está sendo usado para mudar a opacidade 
+        tween(flash.opacity, 1, 0.5, (val) => flash.opacity = val, easings.easeInBounce)
+    }
+
+    // funcao de colidir com o Player -> usando o nome do inimigo e o Player como objetos
+    function onCollideWithPlayer(enemyName, player, worldState) {
+        player.onCollide(enemyName, () => {
+            flashScreen()
+            setTimeout(() => {
+                worldState.playerPos = player.pos
+                worldState.enemyName = enemyName
+                // go -> vai para a cena de batalha
+                go('battle', worldState) 
+            }, 1000)
+        })
+    }
+
+    onCollideWithPlayer('cat', player, worldState)
+    onCollideWithPlayer('spider', player, worldState)
+    onCollideWithPlayer('centipede', player, worldState)
+    onCollideWithPlayer('grass', player, worldState)
 }
