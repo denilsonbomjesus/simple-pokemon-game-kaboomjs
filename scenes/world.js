@@ -233,4 +233,18 @@ function setWorld(worldState) {
     onKeyRelease('right', () => {
         player.stop()
     })
+
+    // se jogado pela primeira vez, o estado do mundo não é definido - então vamos cria-lo para atribuir a posição do player
+    // especifica a posição do player, para quando ele for batalhar e voltar ao mapa, ele comece no mesmo lugar de onde saiu
+    if (!worldState) {
+        worldState = {
+            playerPos : player.pos,
+            faintedMons: []
+        }
+    }
+
+    player.pos = vec2(worldState.playerPos)
+    for (const faintedMon of worldState.faintedMons) {
+        destroy(get(faintedMon)[0])
+    }
 }

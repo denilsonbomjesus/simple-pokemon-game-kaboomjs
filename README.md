@@ -7,6 +7,6 @@
 - [x] 7. Creating the player and an NPC
 - [x] 8. Setting up the camera
 - [x] 9. Setting up player movement
-- [ ] 10. Passing data from one scene to another
+- [x] 10. Passing data from one scene to another
 - [ ] 11. NPC logic
 - [ ] 12. Implementing battle mechanic + game loop
